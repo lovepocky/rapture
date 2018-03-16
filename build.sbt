@@ -53,7 +53,7 @@ lazy val raptureJVM = project.in(file(".raptureJVM"))
   .settings(moduleName := "rapture")
   .settings(raptureSettings)
   .aggregate(baseJVM, coreJVM, timeJVM, uriJVM, codecJVM, cryptoJVM, csvJVM, ioJVM, fsJVM, netJVM, httpJVM, mimeJVM, cliJVM, mailJVM, logJVM, i18nJVM, googleTranslateJVM, textJVM, latexJVM, testJVM, dataJVM, xmlJVM, jsJVM, cssJVM, currencyJVM, jsonJVM, htmlJVM, domJVM, coreScalazJVM, httpJsonJVM, java8SupportJVM, unixsocketJVM)
-  .dependsOn(baseJVM, coreJVM, timeJVM, uriJVM, codecJVM, cryptoJVM, csvJVM, ioJVM, fsJVM, netJVM, httpJVM, mimeJVM, cliJVM, mailJVM, logJVM, i18nJVM, googleTranslateJVM, textJVM, latexJVM, testJVM, dataJVM, xmlJVM, jsJVM, cssJVM, currencyJVM, jsonJVM, htmlJVM, domJVM, coreScalazJVM, httpJsonJVM, java8SupportJVMi, unixsocketJVM)
+  .dependsOn(baseJVM, coreJVM, timeJVM, uriJVM, codecJVM, cryptoJVM, csvJVM, ioJVM, fsJVM, netJVM, httpJVM, mimeJVM, cliJVM, mailJVM, logJVM, i18nJVM, googleTranslateJVM, textJVM, latexJVM, testJVM, dataJVM, xmlJVM, jsJVM, cssJVM, currencyJVM, jsonJVM, htmlJVM, domJVM, coreScalazJVM, httpJsonJVM, java8SupportJVM, unixsocketJVM)
   
 lazy val raptureJS = project.in(file(".raptureJS"))
   .settings(moduleName := "rapture")
@@ -443,6 +443,13 @@ lazy val `json-jackson` = crossProject.dependsOn(json)
 
 lazy val jsonJacksonJVM = `json-jackson`.jvm
 lazy val jsonJacksonJS = `json-jackson`.js
+
+// rapture-json-vertx
+lazy val `json-vertx` = crossProject.dependsOn(json)
+  .settings(moduleName := "rapture-json-vertx")
+  .settings(raptureSettings:_*)
+  .settings(libraryDependencies += "io.vertx" %% "vertx-lang-scala" % "3.5.1")
+lazy val jsonVertxJVM = `json-vertx`.jvm
 
 // rapture-core-scalaz
 lazy val `core-scalaz` = crossProject.dependsOn(core)
